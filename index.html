@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waste Sorting</title>
-    <link rel="stylesheet" href="styles/index.scss">
-</head>
-<body>
-    <script src="scripts/main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Waste Sorting</title>
+        <link rel="stylesheet" href="styles/index.scss" />
+    </head>
+    <body>
+        <div class="trash-interface">
+            <footer class="trash-interface__boxes js-boxes">
+                <template class="js-boxes__template">
+                    <button class="trash-box js-boxes__button" type="button">
+                        <span class="trash-box__label js-boxes__label">Пластик</span>
+                        <div class="trash-box__image">
+                            <img
+                                class="trash-box__top js-boxes__top"
+                                width="90"
+                                height="60"
+                                alt=""
+                            />
+                            <img
+                                class="trash-box__body js-boxes__body"
+                                width="100"
+                                height="120"
+                                alt=""
+                            />
+                        </div></button
+                        >
+                </template>
+            </footer>
+        </div>
+        <script src="scripts/main.js" type="module"></script>
+    </body>
 </html>

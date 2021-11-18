@@ -1,1 +1,3 @@
-console.log('Hello world')
+import { initBoxes } from './boxes'
+
+initBoxes(console.log);
