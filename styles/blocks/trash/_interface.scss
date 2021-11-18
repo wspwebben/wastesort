@@ -1,0 +1,16 @@
+.trash-interface {
+  &__title {
+    color: #162b75;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  &__boxes {
+    display: flex;
+
+    &.is-disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+  }  
+}

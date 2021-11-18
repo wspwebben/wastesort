@@ -1,0 +1,98 @@
+@use '../../mixins';
+
+.trash-box {
+  --box-color: #eee;
+  --box-label-space: 100px;
+
+  position: relative;
+  display: block;
+  padding: 0;
+  padding-top: var(--box-label-space);
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover .trash-box__top,
+  &:focus-visible .trash-box__top {
+    transform: translateY(-20%);
+  }
+
+  &.is-yellow {
+    --box-color: #ffce00;
+  }
+
+  &.is-green {
+    --box-color: #8bbf0c;
+  }
+
+  &.is-blue {
+    --box-color: #0060ee;
+  }
+  
+  &.is-red {
+    --box-color: #de2525;
+  }
+
+  &__label {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    display: block;
+    width: var(--box-label-space);
+    background-color: var(--box-color);
+    color: #fff;
+    padding: 5px;
+    border-radius: 20px;
+  
+    transform: rotate(-45deg);
+  }
+
+  &__image {
+    position: relative;
+  }
+
+  &__top {
+    left: 0;
+    right: 0;
+    top: -5px;
+    position: absolute;
+    margin: 0 auto;
+  
+    /* make top slightly visible when closed */
+    transition: transform 0.3s;
+    transform: translateY(0);
+    transform-origin: center bottom;
+
+    &.is-open {
+      animation: trash-box-open 0.8s;
+    }
+  }
+  
+  &__body {
+    position: relative;
+    background-color: #fff;
+  }
+}
+
+@include mixins.media() {
+  .trash-box {
+    padding-top: 20px;  
+  }
+
+  .trash-box__label {
+    position: static;
+    margin-bottom: 20px;
+    transform: none;
+  }
+}
+  
+@keyframes trash-box-open {
+  50% {
+    transform: translateY(-75%);
+  }
+}
