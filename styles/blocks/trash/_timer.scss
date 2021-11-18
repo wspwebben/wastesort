@@ -1,0 +1,45 @@
+// based on the article:
+// https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
+
+.trash-timer {
+  --timer-background-color: #fff;
+  --timer-line-color: #d4abf1;
+
+  position: relative;
+  height: 200px;
+  width: 200px;
+
+  &.is-done {
+    --timer-line-color: var(--timer-background-color);
+  }
+
+  /* Removes SVG styling that would hide the time label */
+  &__circle {
+    fill: none;
+    stroke: none;
+  }
+  
+  /* The SVG path that displays the timer's progress */
+  &__elapsed {
+    stroke-width: 7px;
+    stroke: var(--timer-background-color);
+  }
+  
+  &__remaining {
+    /* Slightly bigger than the original ring */
+    stroke-width: 8px;
+  
+    /* Rounds the line endings to create a seamless circle */
+    stroke-linecap: round;
+  
+    /* Makes sure the animation starts at the top of the circle */
+    transform: rotate(90deg);
+    transform-origin: center;
+  
+    /* One second aligns with the speed of the countdown timer */
+    /* duration will be set with js */
+    transition: 0s linear stroke-dasharray;
+
+    stroke: var(--timer-line-color);
+  }
+}
