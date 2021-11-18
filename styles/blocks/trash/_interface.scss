@@ -1,12 +1,64 @@
 .trash-interface {
+  display: grid;
+  gap: 20px;
+
   &__title {
     color: #162b75;
     font-size: 24px;
     text-align: center;
   }
+
+  &__playzone {
+    display: grid;
+    gap: 20px 40px;
+    grid-template-columns: repeat(2, min-content);
+    grid-template-rows: minmax(40px, min-content) 1fr;
+    grid-template-areas: "right wrong"
+                         "game game";
+    justify-content: center;
+  }
+
+  &__score {
+    align-self: center;
+
+    &.is-right {
+      grid-area: right;
+    }
+
+    &.is-wrong {
+      grid-area: wrong;
+    }
+  }
+
+  &__game {
+    grid-area: game;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__start {
+    min-width: 200px;
+    min-height: 200px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #b063e7;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: opacity 0.3s, transform 0.3s;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
   
   &__boxes {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    gap: 20px;
 
     &.is-disabled {
       pointer-events: none;

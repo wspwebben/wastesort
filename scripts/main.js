@@ -1,3 +1,3 @@
-import { initBoxes } from './boxes'
+import { initGame } from './game';
 
-initBoxes(console.log);
+initGame();

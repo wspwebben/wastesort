@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/index.scss" />
 </head>
 <body>
-    <div class="trash-interface">
+    <div class="trash-interface js-game">
         <header class="trash-interface__header">
             <h1 class="trash-interface__title">
             Выбери правильный бак для сортировки мусора!
@@ -16,7 +16,7 @@
         </header>
 
         <div class="trash-interface__playzone js-score">
-            <span class="trash-interface__score trash-badge is-green is-spaced-small js-score__badge" hidden>
+            <span class="trash-interface__score trash-badge is-green is-right is-spaced-small js-score__badge" hidden>
                 <img
                     class="base-icon trash-badge__icon"
                     src="images/icons/right.png"
@@ -26,7 +26,7 @@
                 />
                 <span class="js-score__right">0</span>
             </span>
-            <span class="trash-interface__score trash-badge is-magenta is-spaced-small js-score__badge" hidden>
+            <span class="trash-interface__score trash-badge is-magenta is-wrong is-spaced-small js-score__badge" hidden>
                 <img
                     class="base-icon trash-badge__icon"
                     src="images/icons/wrong.png"
@@ -36,6 +36,22 @@
                 />
                 <span class="js-score__wrong">0</span>
             </span>
+            <div class="trash-interface__game">
+                <div class="trash-interface__item js-game__item"></div>
+                <button class="trash-interface__start js-game__start" type="button">Начать!</button>
+                <button class="trash-interface__restart js-game__restart" type="button" hidden>
+                    <span class="trash-badge is-purple is-spaced-medium">
+                        <img
+                            class="base-icon trash-badge__icon"
+                            src="images/icons/restart.png"
+                            width="20"
+                            height="20"
+                            alt=""
+                        />
+                        Еще раз
+                    </span>
+                </button>
+            </div>
         </div>
     
         <footer class="trash-interface__boxes js-boxes">
