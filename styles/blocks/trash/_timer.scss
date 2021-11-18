@@ -6,8 +6,6 @@
   --timer-line-color: #d4abf1;
 
   position: relative;
-  height: 200px;
-  width: 200px;
 
   &.is-done {
     --timer-line-color: var(--timer-background-color);
