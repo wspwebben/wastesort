@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Waste Sorting</title>
-        <link rel="stylesheet" href="styles/index.scss" />
-    </head>
-    <body>
-        <div class="trash-interface">
-            <footer class="trash-interface__boxes js-boxes">
-                <template class="js-boxes__template">
-                    <button class="trash-box js-boxes__button" type="button">
-                        <span class="trash-box__label js-boxes__label">Пластик</span>
-                        <div class="trash-box__image">
-                            <img
-                                class="trash-box__top js-boxes__top"
-                                width="90"
-                                height="60"
-                                alt=""
-                            />
-                            <img
-                                class="trash-box__body js-boxes__body"
-                                width="100"
-                                height="120"
-                                alt=""
-                            />
-                        </div></button
-                        >
-                </template>
-            </footer>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste Sorting</title>
+    <link rel="stylesheet" href="styles/index.scss" />
+</head>
+<body>
+    <div class="trash-interface">
+        <header class="trash-interface__header">
+            <h1 class="trash-interface__title">
+            Выбери правильный бак для сортировки мусора!
+            </h1>
+        </header>
+
+        <div class="trash-interface__playzone js-score">
+            <span class="trash-interface__score trash-badge is-green is-spaced-small js-score__badge" hidden>
+                <img
+                    class="base-icon trash-badge__icon"
+                    src="images/icons/right.png"
+                    width="20"
+                    height="20"
+                    alt=""
+                />
+                <span class="js-score__right">0</span>
+            </span>
+            <span class="trash-interface__score trash-badge is-magenta is-spaced-small js-score__badge" hidden>
+                <img
+                    class="base-icon trash-badge__icon"
+                    src="images/icons/wrong.png"
+                    width="20"
+                    height="20"
+                    alt=""
+                />
+                <span class="js-score__wrong">0</span>
+            </span>
         </div>
-        <script src="scripts/main.js" type="module"></script>
-    </body>
+    
+        <footer class="trash-interface__boxes js-boxes">
+            <template class="js-boxes__template">
+                <button class="trash-box js-boxes__button" type="button">
+                    <span class="trash-box__label js-boxes__label">Пластик</span>
+                    <div class="trash-box__image">
+                        <img
+                            class="trash-box__top js-boxes__top"
+                            width="90"
+                            height="60"
+                            alt=""
+                        />
+                        <img
+                            class="trash-box__body js-boxes__body"
+                            width="100"
+                            height="120"
+                            alt=""
+                        />
+                    </div></button
+                    >
+            </template>
+        </footer>
+    </div>
+    <script src="scripts/main.js" type="module"></script>
+</body>
 </html>

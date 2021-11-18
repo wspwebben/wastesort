@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: Arial, sans-serif;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -24,5 +28,9 @@ button {
 }
 
 svg {
-  fill: currentColor;  
+  fill: currentColor;
+}
+
+[hidden] {
+  display: none !important;
 }
