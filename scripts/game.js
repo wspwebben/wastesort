@@ -27,11 +27,21 @@ const restartGame = () => {
     console.log('restart')
 }
 
+const checkAnswer = (itemType, boxType) => {
+    if (itemType === boxType) {
+        increaseRight();
+    } else {
+        increaseWrong();
+    }
+}
+
 const selectBox = ({ type, moveToDump, removeFromDump }) => {
     const $item = getItemElement();
     const item = getCurrentItem();
 
     setInteractivity(false)
+
+    checkAnswer(item.type, type);
 
     animate({
         element: $item,
