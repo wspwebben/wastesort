@@ -6,25 +6,24 @@ const $remaining = $container.querySelector(`.${BLOCK_CLASSNAME}__remaining`);
 
 export const initCountdown = (timeLimit) => {
     const circleLength = Math.ceil($elapsed.getTotalLength());
-
-    let countdownEndCallback = () => {};
-    
-    const subscribeToEnd = (callback) => countdownEndCallback = callback;
-
+    $container.classList.remove('is-done')
     $remaining.setAttribute('stroke-dasharray', `${circleLength} ${circleLength}`)
     
     requestAnimationFrame(() => {
-        $remaining.style.transitionDuration = `${timeLimit}s`
-        $remaining.setAttribute('stroke-dasharray', `0 ${circleLength}`)
+
+        requestAnimationFrame(() => {
+            $remaining.style.transitionDuration = `${timeLimit}s`
+            $remaining.setAttribute('stroke-dasharray', `0 ${circleLength}`)
+        })
     })
 
-    $remaining.addEventListener('transitionend', () => {
-        $container.classList.add('is-done');
+    return new Promise((resolve) => {
+        $remaining.addEventListener('transitionend', () => {
+            $remaining.style.transitionDuration = ''
 
-        countdownEndCallback();
-    }, { once: true })
-
-    return {
-        subscribeToEnd,
-    }
+            $container.classList.add('is-done')
+    
+            resolve()
+        }, { once: true })
+    })
 }

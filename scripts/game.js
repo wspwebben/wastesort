@@ -5,7 +5,7 @@ import { initCountdown } from './countdown';
 import { notifyRight, notifyWrong } from './notification';
 import { animate } from './flip';
 
-const { increaseRight, increaseWrong, reset, setVisibility } = initScore();
+const score = initScore();
 
 const BLOCK_CLASSNAME = 'js-game';
 const GAME_TIME = 60;
@@ -15,25 +15,37 @@ const $item = $container.querySelector(`.${BLOCK_CLASSNAME}__item`)
 const $start = $container.querySelector(`.${BLOCK_CLASSNAME}__start`)
 const $restart = $container.querySelector(`.${BLOCK_CLASSNAME}__restart`)
 
+const stopGame = () => {
+    $item.hidden = true
+    $restart.hidden = false
+    setInteractivity(false)
+}
+
 const startGame = () => {
     $start.hidden = true
     $item.hidden = false
 
-    initCountdown(GAME_TIME)
-    setVisibility(true)
+    score.setVisibility(true)
+    setInteractivity(true)
     addItem();
+    initCountdown(GAME_TIME).then(() => {
+        stopGame()
+    })
 }
 
 const restartGame = () => {
-    console.log('restart')
+    $restart.hidden = true
+    score.reset()
+    
+    startGame()
 }
 
 const checkAnswer = (itemType, boxType) => {
     if (itemType === boxType) {
-        increaseRight()
+        score.increaseRight()
         notifyRight()
     } else {
-        increaseWrong()
+        score.increaseWrong()
         notifyWrong()
     }
 }
@@ -58,6 +70,7 @@ const selectBox = ({ type, moveToDump, removeFromDump }) => {
 
 export const initGame = () => {
     initBoxes(selectBox)
+    setInteractivity(false)
     
     $start.addEventListener('click', startGame)
     $restart.addEventListener('click', restartGame)

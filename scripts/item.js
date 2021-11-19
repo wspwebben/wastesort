@@ -35,7 +35,7 @@ export const addItem = () => {
     takeNewElement();
     const $item = createItemBlock(currentItem)
 
-    $container.append($item)
+    $container.replaceChildren($item)
 }
 
 export const getCurrentItem = () => currentItem
