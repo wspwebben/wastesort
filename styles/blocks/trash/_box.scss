@@ -12,6 +12,10 @@
   background-color: transparent;
   cursor: pointer;
 
+  @include mixins.media() {
+    padding-top: 20px;  
+  }
+
   &:focus {
     outline: 0;
   }
@@ -37,6 +41,23 @@
     --box-color: #de2525;
   }
 
+  &.is-dumping {
+    .trash-box {
+      &__top {
+        animation-name: trash-box-open;
+        animation-duration: 0.7s;
+        // animation-delay: 0.1s;
+      }
+
+      &__item-dump {
+        animation-name: trash-box-dump-disappear;
+        animation-duration: 0.7s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+      }
+    }
+  }
+
   &__label {
     position: absolute;
     top: 40px;
@@ -50,6 +71,12 @@
     border-radius: 20px;
   
     transform: rotate(-45deg);
+
+    @include mixins.media() {  
+      position: static;
+      margin-bottom: 20px;
+      transform: none;
+    }
   }
 
   &__image {
@@ -67,32 +94,39 @@
     transition: transform 0.3s;
     transform: translateY(0);
     transform-origin: center bottom;
-
-    &.is-open {
-      animation: trash-box-open 0.8s;
-    }
   }
   
   &__body {
     position: relative;
     background-color: #fff;
   }
-}
 
-@include mixins.media() {
-  .trash-box {
-    padding-top: 20px;  
-  }
-
-  .trash-box__label {
-    position: static;
-    margin-bottom: 20px;
-    transform: none;
+  &__item-dump {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    
+    transform: scale(0.5);
+    transform-origin: center bottom;
   }
 }
   
 @keyframes trash-box-open {
   50% {
     transform: translateY(-75%);
+  }
+}
+
+@keyframes trash-box-dump-disappear {
+  from {
+    opacity: 1;
+    transform: scale(1)
+  }
+
+  to {
+    opacity: 0.7;
+    transform: scale(0);
   }
 }

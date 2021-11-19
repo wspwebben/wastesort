@@ -1,3 +1,13 @@
 .trash-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
+  border-radius: 50%;
+  background-color: #eee;
+
+  &::before {
+    content: "";
+    padding-top: 100%;
+  }
 }

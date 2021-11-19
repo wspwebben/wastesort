@@ -37,8 +37,8 @@
                 <span class="js-score__wrong">0</span>
             </span>
             <div class="trash-interface__game">
-                <div class="trash-interface__item js-game__item" hidden>
-                    <div class="trash-timer js-countdown">
+                <div class="trash-interface__circle js-game__item" hidden>
+                    <div class="trash-interface__timer trash-timer js-countdown">
                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                           <g class="trash-timer__circle">
                             <circle class="trash-timer__elapsed js-countdown__elapsed" cx="50" cy="50" r="45" />
@@ -53,7 +53,12 @@
                             ></path>
                           </g>
                         </svg>
-                      </div>
+                    </div>
+                    <div class="trash-interface__item-wrapper js-item">
+                        <template class="js-item__template">
+                            <span class="trash-interface__item trash-item js-item__content"></span>
+                        </template>
+                    </div>
                 </div>
                 <button class="trash-interface__start js-game__start" type="button">Начать!</button>
                 <button class="trash-interface__restart js-game__restart" type="button" hidden>
@@ -82,14 +87,16 @@
                             height="60"
                             alt=""
                         />
+                        <div class="trash-box__item-dump js-boxes__dump"></div>
                         <img
                             class="trash-box__body js-boxes__body"
                             width="100"
                             height="120"
                             alt=""
                         />
-                    </div></button
-                    >
+                    </div>
+                    
+                </button>
             </template>
         </footer>
     </div>

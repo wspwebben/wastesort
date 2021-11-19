@@ -1,6 +1,8 @@
-import { initBoxes } from './boxes'
+import { initBoxes, setInteractivity } from './boxes'
+import { addItem, getCurrentItem, getItemElement } from './item';
 import { initScore } from './score';
 import { initCountdown } from './countdown';
+import { animate } from './flip';
 
 const { increaseRight, increaseWrong, reset, setVisibility } = initScore();
 
@@ -18,14 +20,27 @@ const startGame = () => {
 
     initCountdown(GAME_TIME)
     setVisibility(true)
+    addItem();
 }
 
 const restartGame = () => {
     console.log('restart')
 }
 
-const selectBox = (type) => {
-    console.log(type)
+const selectBox = ({ type, moveToDump, removeFromDump }) => {
+    const $item = getItemElement();
+    const item = getCurrentItem();
+
+    setInteractivity(false)
+
+    animate({
+        element: $item,
+        trigger: moveToDump,
+        cleanup: removeFromDump,
+    }).then(() => {
+        addItem()
+        setInteractivity(true)
+    })
 }
 
 export const initGame = () => {
