@@ -2,6 +2,7 @@ import { initBoxes, setInteractivity } from './boxes'
 import { addItem, getCurrentItem, getItemElement } from './item';
 import { initScore } from './score';
 import { initCountdown } from './countdown';
+import { notifyRight, notifyWrong } from './notification';
 import { animate } from './flip';
 
 const { increaseRight, increaseWrong, reset, setVisibility } = initScore();
@@ -29,9 +30,11 @@ const restartGame = () => {
 
 const checkAnswer = (itemType, boxType) => {
     if (itemType === boxType) {
-        increaseRight();
+        increaseRight()
+        notifyRight()
     } else {
-        increaseWrong();
+        increaseWrong()
+        notifyWrong()
     }
 }
 
