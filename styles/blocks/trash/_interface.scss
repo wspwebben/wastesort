@@ -23,7 +23,7 @@
                          "game game";
     justify-content: center;
     
-    @include mixins.media(360px) {
+    @include mixins.media(400px) {
       grid-template-columns: repeat(3, max-content);
       grid-template-rows: min-content;
       grid-template-areas: "right game wrong";
