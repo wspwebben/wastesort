@@ -48,5 +48,5 @@ export const ITEMS = [
   {
     type: BoxType.Organic,
     label: 'Огрызок яблока',
-  },    
+  },
 ]

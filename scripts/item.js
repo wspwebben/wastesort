@@ -1,11 +1,23 @@
-const BLOCK_CLASSNAME = 'js-item';
+import { ITEMS } from './consts'
+import { shuffle } from './random'
+import { takeRandomElement } from './array';
+
+const BLOCK_CLASSNAME = 'js-item'
+const REFILL_COUNT = 2;
 
 const $container = document.querySelector(`.${BLOCK_CLASSNAME}`)
 const $template = $container.querySelector(`.${BLOCK_CLASSNAME}__template`)
 
-let currentItem = {
-    label: 'Салфетка',
-    type: 'paper',
+let itemsPool = shuffle([...ITEMS])
+let currentItem = takeRandomElement(itemsPool);
+
+const takeNewElement = () => {
+    currentItem = takeRandomElement(itemsPool);
+    
+    if (itemsPool.length <= REFILL_COUNT) {
+        itemsPool.push(...ITEMS)
+        shuffle(itemsPool)
+    }
 }
 
 const createItemBlock = (item) => {
@@ -20,6 +32,7 @@ const createItemBlock = (item) => {
 }
 
 export const addItem = () => {
+    takeNewElement();
     const $item = createItemBlock(currentItem)
 
     $container.append($item)
