@@ -1,0 +1,12 @@
+@use '../mixins';
+@use '../variables';
+
+.container {
+    max-width: variables.$container-width;
+    margin: 0 auto;
+    padding: 0 5px;
+
+    @include mixins.media(360px) {
+        padding: 0 20px;
+    }
+}
